@@ -43,7 +43,8 @@ class DetailTableViewController: UITableViewController, UIImagePickerControllerD
         } else {
             photoImageView.image = UIImage(named: "photoalbum")
         }
-        
+        nameTextField.text = person?.name
+        notesTextField.text = person?.notes
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,8 +67,7 @@ class DetailTableViewController: UITableViewController, UIImagePickerControllerD
         
         // Get the new view controller using segue.destinationViewController
         // Pass the selected object to the new view controller
-        if segue.identifier == "saveToList",
-            let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        if segue.identifier == "saveToList", let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
         {
             let name = nameTextField.text!
             let photo = photoImageView.image

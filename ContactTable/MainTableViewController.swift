@@ -33,17 +33,10 @@ class MainTableViewController: UITableViewController {
             }
         }
          */
-        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-            if !FileManager().fileExists(atPath: PersonsMO.StoreURL.path) {
-                for name in acqNames {
-                    let person = appDelegate.addToContext(name: name, photo: UIImage(named: name), notes: nil)
-                    acqList.append(person)
-                }
-            } else {
-                if let fetchedList = appDelegate.fetchContext() {
-                    acqList += fetchedList
-                }
-        }
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let fetchedList = appDelegate.fetchContext() {
+
+            acqList += fetchedList
+            
     }
 }
     
