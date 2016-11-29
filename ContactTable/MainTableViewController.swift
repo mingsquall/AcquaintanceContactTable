@@ -14,7 +14,9 @@ class MainTableViewController: UITableViewController {
     //空数组
     var acqList = [PersonsMO]()
     
+    /* // - 初始化
     var acqNames = ["Ameir Al-Zoubi", "Bill Dudney", "Bob McCune", "Brent Simmons", "Cesare Rocchi", "Chad Sellers", "Conrad Stoll", "Daniel Pasco", "Jaimee Newberry", "James Dempsey", "Josh Abernathy", "Justin Miller", "Ken Auer", "Kevin Harwood", "Kyle Richter", "Manton Reece", "Marcus Zarra", "Mark Pospesel", "Matt Drance", "Michael Simmons", "Michele Titolo", "Michael Simmons", "Rene Cacheaux", "Rob Napier", "Scott McAlister", "Sean McMains"]
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,6 @@ class MainTableViewController: UITableViewController {
         }
          */
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let fetchedList = appDelegate.fetchContext() {
-
             acqList += fetchedList
             
     }
@@ -85,7 +86,8 @@ class MainTableViewController: UITableViewController {
         
         cell.nameLabel.text = person.name
         cell.notesLabel.text = person.notes
-        
+        cell.photoImageView.layer.cornerRadius = 46
+        cell.photoImageView.layer.masksToBounds = true
         return cell
 
     

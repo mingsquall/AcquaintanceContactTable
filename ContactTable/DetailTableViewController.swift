@@ -38,6 +38,13 @@ class DetailTableViewController: UITableViewController, UIImagePickerControllerD
         
         notesTextField.text = person?.personNote
          */
+        
+        // Set corner ImageView
+        self.photoImageView.layer.cornerRadius = 46
+        self.photoImageView.layer.masksToBounds = true
+        
+        
+        
         if let photoData = person?.photo {
             photoImageView.image = UIImage(data: photoData as Data)
         } else {
@@ -45,12 +52,16 @@ class DetailTableViewController: UITableViewController, UIImagePickerControllerD
         }
         nameTextField.text = person?.name
         notesTextField.text = person?.notes
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     
     // 在detail中准备数据
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,7 +115,7 @@ class DetailTableViewController: UITableViewController, UIImagePickerControllerD
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1,
+        if indexPath.section == 0,
             UIImagePickerController.isSourceTypeAvailable(.photoLibrary) { // photo's section
             // 启动图片库
             let imagePicker = UIImagePickerController()
@@ -113,6 +124,7 @@ class DetailTableViewController: UITableViewController, UIImagePickerControllerD
             imagePicker.delegate = self
             present(imagePicker, animated: true, completion: nil)
         }
+//        print("section\(indexPath.section)clicked")
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
